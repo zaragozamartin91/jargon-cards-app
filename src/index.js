@@ -1,15 +1,9 @@
-import FirebaseFacade from "./FirebaseFacade"
+import React from 'react';
+import * as ReactDOMClient from 'react-dom/client';
+import Home from './Home';
 
+const container = document.getElementById('app');
 
-async function runSampleQuery() {
-  const firebaseFacade = new FirebaseFacade()
-  const querySnapshot = await firebaseFacade.sampleQuery()
-  querySnapshot.forEach((doc) => {
-    const result = JSON.stringify(doc.data())
-    console.log(`${doc.id} => ${result}`)
-    document.getElementById('saple-query-placeholder').textContent = result
-  })
-}
-
-console.log('Configuring saple-query-button')
-document.getElementById('saple-query-button').onclick = () => runSampleQuery()
+// Create a root.
+const root = ReactDOMClient.createRoot(container);
+root.render(<React.StrictMode><Home /></React.StrictMode>)
