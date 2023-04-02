@@ -19,7 +19,7 @@ export default class Home extends React.Component {
     }
 
     async runSampleQuery() {
-        const firebaseFacade = new FirebaseFacade()
+        const firebaseFacade = FirebaseFacade.getDefault()
         const querySnapshot = await firebaseFacade.sampleQuery()
         const queryResults = []
         querySnapshot.forEach((doc) => {
