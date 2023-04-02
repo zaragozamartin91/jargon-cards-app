@@ -1,5 +1,5 @@
 import React from 'react'
-import FirebaseFacade from "./FirebaseFacade"
+import FirebaseFacade from "../integrations/FirebaseFacade"
 
 
 export default class Home extends React.Component {
@@ -11,7 +11,7 @@ export default class Home extends React.Component {
     render() {
         const queryResults = this.state.sampleQueryResults.map((qr, idx) => <li key={idx}>{qr}</li>)
         return <div>
-            <button onClick={this.runSampleQuery.bind(this)} id="saple-query-button">Run sample query</button>
+            <button onClick={this.runSampleQuery.bind(this)}>Run sample query</button>
             <ul>
                 {queryResults}
             </ul>
