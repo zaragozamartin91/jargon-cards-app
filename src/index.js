@@ -1,6 +1,6 @@
 import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
-import Home from './Home';
+import Home from './components/Home';
 
 const container = document.getElementById('app');
 
