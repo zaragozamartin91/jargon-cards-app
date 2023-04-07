@@ -11,16 +11,19 @@ import {
 
 import Home from './Home'
 
+const MAIN_PATH = '/jargon-cards-app'
+const ABOUT_PATH = `${MAIN_PATH}/about`
+
 function Layout() {
     return <div id="main-layout">
         {/* A "layout route" is a good place to put markup you want to share across all the pages on your site, like navigation. */}
         <nav>
             <ul>
                 <li>
-                    <Link to="/main">Home</Link>
+                    <Link to={MAIN_PATH}>Home</Link>
                 </li>
                 <li>
-                    <Link to="/about">About</Link>
+                    <Link to={ABOUT_PATH}>About</Link>
                 </li>
                 <li>
                     <Link to="/dashboard">Dashboard</Link>
@@ -53,9 +56,10 @@ export default function MainRouter() {
     const browserRouter = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<Layout />}>
-                <Route index element={<Navigate to="/main" />} />
+                <Route index element={<Navigate to={MAIN_PATH} />} />
 
-                <Route path='/main' element={<Home />} />
+                <Route path={MAIN_PATH} element={<Home />} />
+                <Route path={ABOUT_PATH} element={<div>About</div>} />
 
                 {/* Using path="*"" means "match anything", so this route acts like a catch-all for URLs that we don't have explicit routes for. */}
                 <Route path="*" element={<NotFoundPage />} />
