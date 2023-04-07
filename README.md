@@ -27,3 +27,11 @@ The `docs/bundle.js` file is generated.
 Frontend entrypoint is `docs/index.html` which in turn relies on  `docs/bundle.js` for running App logic.
 
 Run `npm run build-prod` before pushing a new branch.
+
+## Start firebase emulator
+
+Run `npm run firebase-emulators` to start the Firebase emulator
+
+The emulated services are hosted in `http://127.0.0.1:4000`
+
+Data is imported and exported from/to the firebase-saved-data dir
