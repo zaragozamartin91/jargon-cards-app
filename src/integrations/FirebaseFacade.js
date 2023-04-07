@@ -27,28 +27,24 @@ const firebaseConfig = {
     }
 }
 
-const firebaseInstance = {
-    cloud: new Lazy(() => initializeApp(firebaseConfig.cloud)),
-    local: new Lazy(() => initializeApp(firebaseConfig.local)),
-}
-
-const firestoreInstance = {
-    cloud: new Lazy(() => getFirestore(firebaseInstance.cloud.value)),
-    local: new Lazy(() => {
-        const db = getFirestore(firebaseInstance.local.value)
-        connectFirestoreEmulator(db, 'localhost', 8089)
-        return db
-    }),
-}
-
-const firebaseFacade = {
+const defaultFirebaseFacade = {
     cloud: new Lazy(() => {
         console.log('Configuring CLOUD firebase facade')
-        return new FirebaseFacade(firebaseInstance.cloud.value, firestoreInstance.cloud.value)
+
+        const firebaseApp = initializeApp(firebaseConfig.cloud)
+        const firestore = getFirestore(firebaseApp)
+
+        return new FirebaseFacade(firebaseApp, firestore)
     }),
     local: new Lazy(() => {
         console.log('Configuring LOCAL firebase facade')
-        return new FirebaseFacade(firebaseInstance.local.value, firestoreInstance.local.value)
+
+        const firebaseApp = initializeApp(firebaseConfig.local)
+
+        const db = getFirestore(firebaseApp)
+        connectFirestoreEmulator(db, 'localhost', 8089)
+
+        return new FirebaseFacade(firebaseApp, db)
     })
 }
 
@@ -62,7 +58,7 @@ export default class FirebaseFacade {
      */
     static getDefault() {
         const environment = location.hostname === 'localhost' ? 'local' : 'cloud'
-        return firebaseFacade[environment].value
+        return defaultFirebaseFacade[environment].value
     }
 
     /**
