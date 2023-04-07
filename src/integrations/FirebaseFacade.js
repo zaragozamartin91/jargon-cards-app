@@ -63,8 +63,8 @@ export default class FirebaseFacade {
 
     /**
      * Constructs a firebase facade
-     * @param {FirebaseApp} firebaseApp Firebase app instance
-     * @param {Firestore} firestore Firestore instance
+     * @param {import("@firebase/app").FirebaseApp} firebaseApp Firebase app instance
+     * @param {import("@firebase/firestore").Firestore} firestore Firestore instance
      */
     constructor(firebaseApp, firestore) {
         this.firebaseApp = firebaseApp
@@ -73,7 +73,7 @@ export default class FirebaseFacade {
 
     /**
      * Returns Instance of firebase app
-     * @returns {FirebaseApp} Instance of firebase app
+     * @returns {import("@firebase/app").FirebaseApp} Firebase app instance
      */
     getApp() {
         return this.firebaseApp
@@ -81,7 +81,7 @@ export default class FirebaseFacade {
 
     /**
      * Returns firestore instance
-     * @returns {Firestore} Firestore instance
+     * @returns {import("@firebase/firestore").Firestore} Firestore instance
      */
     getDb() {
         return this.firestore
