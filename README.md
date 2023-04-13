@@ -34,4 +34,5 @@ Run `npm run firebase-emulators` to start the Firebase emulator
 
 The emulated services are hosted in `http://127.0.0.1:4000`
 
-Data is imported and exported from/to the firebase-saved-data dir
+Data is imported and exported from/to the firebase-saved-data dir.
+
