@@ -11,8 +11,9 @@ import {
 
 import Home from './Home'
 
-const MAIN_PATH = '/jargon-cards-app'
-const ABOUT_PATH = `${MAIN_PATH}/about`
+const ROOT_PATH = '/jargon-cards-app'
+const HOME_PATH = `${ROOT_PATH}/home`
+const ABOUT_PATH = `${ROOT_PATH}/about`
 
 function Layout() {
     return <div id="main-layout">
@@ -20,7 +21,7 @@ function Layout() {
         <nav>
             <ul>
                 <li>
-                    <Link to={MAIN_PATH}>Home</Link>
+                    <Link to={HOME_PATH}>Home</Link>
                 </li>
                 <li>
                     <Link to={ABOUT_PATH}>About</Link>
@@ -56,9 +57,9 @@ export default function MainRouter() {
     const browserRouter = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<Layout />}>
-                <Route index element={<Navigate to={MAIN_PATH} />} />
+                <Route index element={<Navigate to={HOME_PATH} />} />
 
-                <Route path={MAIN_PATH} element={<Home />} />
+                <Route path={HOME_PATH} element={<Home />} />
                 <Route path={ABOUT_PATH} element={<div>About</div>} />
 
                 {/* Using path="*"" means "match anything", so this route acts like a catch-all for URLs that we don't have explicit routes for. */}
