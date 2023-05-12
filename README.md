@@ -35,3 +35,7 @@ Run `npm run firebase-emulators` to start the Firebase emulator
 The emulated services are hosted in `http://127.0.0.1:4000`
 
 Data is imported and exported from/to the firebase-saved-data dir
+
+NOTE: It seems like npm run serve-dev is no longer compiling components correctly...
+Maybe it has to do with the split webpack configuration.
+The issue could be solved with this: https://stackoverflow.com/questions/31844343/how-to-use-webpack-dev-server-multiple-entries-point 

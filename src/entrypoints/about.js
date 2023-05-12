@@ -1,14 +1,21 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
-import MainRouter from './components/MainRouter'
+import MainNavigator from '../components/MainNavigator'
 
 
 const container = document.getElementById('app')
+
+function About() {
+    return <div>About the FANTASTIC page</div>
+}
+
 
 // Create a root.
 const root = ReactDOMClient.createRoot(container)
 root.render(
     <React.StrictMode>
-        <MainRouter />
+        <MainNavigator />
+        <hr />
+        <About />
     </React.StrictMode>
 )
