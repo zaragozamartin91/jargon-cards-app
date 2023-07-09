@@ -9,44 +9,36 @@ import { collection, getDocs } from "firebase/firestore"
 
 import Lazy from "../utils/Lazy"
 
-// Firebase APP base configuration
-const firebaseConfig = {
-    // cloud config
-    cloud: {
+const CLOUD_FIREBASE = new Lazy(() => {
+    console.log('Configuring CLOUD firebase facade')
+
+    const firebaseCloudConfig =  {
         apiKey: "AIzaSyAtGdeC3NiKHnA8N8zwB0Bx5u-XCyl5Ntw",
         authDomain: "jargon-cards.firebaseapp.com",
         projectId: "jargon-cards",
         storageBucket: "jargon-cards.appspot.com",
         messagingSenderId: "869716338916",
         appId: "1:869716338916:web:b5df7196840f580fda64f1"
-    },
-
-    // local emulators config
-    local: {
-        projectId: "jargon-cards",
     }
-}
+    const firebaseApp = initializeApp(firebaseCloudConfig)
+    const firestore = getFirestore(firebaseApp)
 
-const defaultFirebaseFacade = {
-    cloud: new Lazy(() => {
-        console.log('Configuring CLOUD firebase facade')
+    return new FirebaseFacade(firebaseApp, firestore)
+})
 
-        const firebaseApp = initializeApp(firebaseConfig.cloud)
-        const firestore = getFirestore(firebaseApp)
+const LOCAL_FIREBASE = new Lazy(() => {
+    console.log('Configuring LOCAL firebase facade')
 
-        return new FirebaseFacade(firebaseApp, firestore)
-    }),
-    local: new Lazy(() => {
-        console.log('Configuring LOCAL firebase facade')
+    const firebaseLocalConfig = {
+        projectId: "jargon-cards"
+    }
+    const firebaseApp = initializeApp(firebaseLocalConfig)
 
-        const firebaseApp = initializeApp(firebaseConfig.local)
+    const db = getFirestore(firebaseApp)
+    connectFirestoreEmulator(db, 'localhost', 8089)
 
-        const db = getFirestore(firebaseApp)
-        connectFirestoreEmulator(db, 'localhost', 8089)
-
-        return new FirebaseFacade(firebaseApp, db)
-    })
-}
+    return new FirebaseFacade(firebaseApp, db)
+})
 
 /**
  * Simple facade for implementing firebase-facing features
@@ -57,8 +49,13 @@ export default class FirebaseFacade {
      * @returns {FirebaseFacade} Firebase facade instance
      */
     static getDefault() {
-        const environment = location.hostname === 'localhost' ? 'local' : 'cloud'
-        return defaultFirebaseFacade[environment].value
+        switch (location.hostname) {
+            case 'localhost':
+            case '127.0.0.1':
+                return LOCAL_FIREBASE.value
+            default:
+                return CLOUD_FIREBASE.value
+        }
     }
 
     /**
