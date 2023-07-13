@@ -13,7 +13,7 @@ import Lazy from "../utils/Lazy"
 const CLOUD_FIREBASE = new Lazy(() => {
     console.log('Configuring CLOUD firebase facade')
 
-    const firebaseCloudConfig =  {
+    const firebaseCloudConfig = {
         apiKey: "AIzaSyAtGdeC3NiKHnA8N8zwB0Bx5u-XCyl5Ntw",
         authDomain: "jargon-cards.firebaseapp.com",
         projectId: "jargon-cards",
@@ -50,6 +50,22 @@ const LOCAL_FIREBASE = new Lazy(() => {
  */
 export default class FirebaseFacade {
     /**
+     * Returns a Firebase facade instance configured against the local emulator
+     * @returns {FirebaseFacade} Firebase facade instance configured against the local emulator
+     */
+    static getLocal() {
+        return LOCAL_FIREBASE.value
+    }
+
+    /**
+     * Returns a Firebase facade instance configured against the cloud
+     * @returns {FirebaseFacade} Firebase facade instance configured against the cloud
+     */
+    static getCloud() {
+        return CLOUD_FIREBASE.value
+    }
+
+    /**
      * Retrieves the default firebase facade
      * @returns {FirebaseFacade} Firebase facade instance
      */
@@ -57,9 +73,9 @@ export default class FirebaseFacade {
         switch (location.hostname) {
             case 'localhost':
             case '127.0.0.1':
-                return LOCAL_FIREBASE.value
+                return FirebaseFacade.getLocal()
             default:
-                return CLOUD_FIREBASE.value
+                return FirebaseFacade.getCloud()
         }
     }
 
