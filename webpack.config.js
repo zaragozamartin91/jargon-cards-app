@@ -13,7 +13,7 @@ module.exports = {
     return config
   }, {}),
 
-   // The location of the build folder described above
+  // The location of the build folder described above
   output: {
     filename: "[name]_bundle.js",
     path: path.resolve(__dirname, "docs", "bundles"),
@@ -24,13 +24,18 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ['babel-loader']
       },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader']
+      }
     ],
   },
 
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx', '.css'],
   },
 
 
