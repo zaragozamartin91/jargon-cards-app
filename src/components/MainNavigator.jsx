@@ -25,6 +25,9 @@ export default function MainNavigator() {
                 <li>
                     <a href='login_demo.html'>Login demo</a>
                 </li>
+                <li>
+                    <a href='jargon_card_demo.html'>Jargon card demo</a>
+                </li>
             </ul>
         </nav>
         <button onClick={showCurrentUser}>Current user</button>

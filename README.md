@@ -66,3 +66,6 @@ Dictionaries can be downloaded from https://freedict.org/downloads/
 
 Dictionaries are encoded into [TEI format](https://cdrh.unl.edu/articles/basicguide/TEI) (Xml format)
 
+The TEI file was parsed using [xml-js](https://www.npmjs.com/package/xml-js).
+
+The scprit for parsing the TEI file can be found in `src/poc/read_xml.js`.
