@@ -8,17 +8,22 @@ export default class JargonCard extends React.Component {
     }
 
     render() {
-        return <div className="flip-card">
-            <div className="flip-card-inner">
+        /** @type{string} */    const word = this.props.word
+        /** @type{[string]} */  const translations = this.props.translations
+
+        const cardInnerStyle = this.props.flipped ? { transform: 'rotateY(180deg)' } : {}
+
+        console.log('jargon-card rendered!')
+
+        return <div id='jargon-card' className="flip-card">
+            <div className="flip-card-inner" onClick={() => this.props.onClick()} style={cardInnerStyle}>
                 <div className="flip-card-front">
-                    <h1>Pepe argento</h1>
-                    <p>Shoe salesman</p>
-                    <p>He is papucho</p>
+                    <h1>Swedish</h1>
+                    <p>{word}</p>
                 </div>
                 <div className="flip-card-back">
-                    <h1>John Doe</h1>
-                    <p>Architect & Engineer</p>
-                    <p>We love that guy</p>
+                    <h1>English</h1>
+                    {translations.map(t => <p>{t}</p>)}
                 </div>
             </div>
         </div>
