@@ -1,5 +1,6 @@
 import React from 'react'
 import FirebaseFacade from "../integrations/FirebaseFacade"
+import ContentContainer from './ContentContainer'
 
 
 export default class LoginDemo extends React.Component {
@@ -8,7 +9,7 @@ export default class LoginDemo extends React.Component {
     }
 
     render() {
-        return <div className="wrapper">
+        return <ContentContainer>
             <h1>Login</h1>
             <form onSubmit={this.handleSubmit.bind(this)}>
                 <fieldset>
@@ -23,7 +24,7 @@ export default class LoginDemo extends React.Component {
                 </fieldset>
                 <button type="submit">Submit</button>
             </form>
-        </div>
+        </ContentContainer>
     }
 
     handleSubmit(e) {

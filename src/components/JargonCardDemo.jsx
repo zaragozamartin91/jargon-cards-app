@@ -1,7 +1,7 @@
 import React from 'react'
 import JargonCard from './JargonCard'
+import ContentContainer from './ContentContainer'
 import Random from '../utils/Random'
-import './JargonCardDemo.css'
 
 
 export default class JargonCardDemo extends React.Component {
@@ -13,18 +13,16 @@ export default class JargonCardDemo extends React.Component {
     render() {
         const { word, translations } = this.state
 
-        return <div className='contentContainer'>
-            <div id='jargon-card-demo'>
-                <button onClick={() => this.generateCard()}>Generate card</button>
-                <div id='jargon-card-container'>
-                    <JargonCard
-                        word={word}
-                        translations={translations}
-                        flipped={this.state.cardFlipped}
-                        onClick={() => this.flipCard()} />
-                </div>
+        return <ContentContainer>
+            <button onClick={() => this.generateCard()}>Generate card</button>
+            <div id='jargon-card-container'>
+                <JargonCard
+                    word={word}
+                    translations={translations}
+                    flipped={this.state.cardFlipped}
+                    onClick={() => this.flipCard()} />
             </div>
-        </div>
+        </ContentContainer>
     }
 
     async generateCard() {

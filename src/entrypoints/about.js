@@ -1,12 +1,15 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
-import MainNavigator from '../components/MainNavigator'
+import SideNavigator from '../components/SideNavigator'
+import ContentContainer from "../components/ContentContainer";
 
 
 const container = document.getElementById('app')
 
 function About() {
-    return <div>About the FANTASTIC page</div>
+    return <ContentContainer>
+        <div>About the FANTASTIC page</div>
+    </ContentContainer>
 }
 
 
@@ -14,8 +17,7 @@ function About() {
 const root = ReactDOMClient.createRoot(container)
 root.render(
     <React.StrictMode>
-        <MainNavigator />
-        <hr />
+        <SideNavigator />
         <About />
     </React.StrictMode>
 )
