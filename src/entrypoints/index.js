@@ -1,7 +1,7 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
 import Home from '../components/Home'
-import MainNavigator from '../components/MainNavigator'
+import SideNavigator from '../components/SideNavigator'
 
 const container = document.getElementById('app')
 
@@ -9,8 +9,7 @@ const container = document.getElementById('app')
 const root = ReactDOMClient.createRoot(container)
 root.render(
     <React.StrictMode>
-        <MainNavigator />
-        <hr />
+        <SideNavigator />
         <Home />
     </React.StrictMode>
 )

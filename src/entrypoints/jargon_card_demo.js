@@ -1,7 +1,7 @@
 import React from 'react'
 import * as ReactDOMClient from 'react-dom/client'
-import MainNavigator from '../components/MainNavigator'
 import JargonCardDemo from '../components/JargonCardDemo'
+import SideNavigator from '../components/SideNavigator'
 
 const container = document.getElementById('app')
 
@@ -10,8 +10,7 @@ const container = document.getElementById('app')
 const root = ReactDOMClient.createRoot(container)
 root.render(
     <React.StrictMode>
-        <MainNavigator />
-        <hr />
+        <SideNavigator />
         <JargonCardDemo />
     </React.StrictMode>
 )
