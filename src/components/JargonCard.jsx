@@ -19,11 +19,13 @@ export default class JargonCard extends React.Component {
             <div className="flip-card-inner" onClick={() => this.props.onClick()} style={cardInnerStyle}>
                 <div className="flip-card-front">
                     <h1>Swedish</h1>
+                    <hr />
                     <p>{word}</p>
                 </div>
                 <div className="flip-card-back">
                     <h1>English</h1>
-                    {translations.map(t => <p>{t}</p>)}
+                    <hr />
+                    {translations.map(t => <p key={t}>{t}</p>)}
                 </div>
             </div>
         </div>
