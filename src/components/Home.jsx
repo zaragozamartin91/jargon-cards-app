@@ -1,5 +1,6 @@
 import React from 'react'
 import FirebaseFacade from "../integrations/FirebaseFacade"
+import ContentContainer from './ContentContainer'
 
 
 export default class Home extends React.Component {
@@ -10,12 +11,12 @@ export default class Home extends React.Component {
 
     render() {
         const queryResults = this.state.sampleQueryResults.map((qr, idx) => <li key={idx}>{qr}</li>)
-        return <div>
+        return <ContentContainer>
             <button onClick={this.runSampleQuery.bind(this)}>Run sample query</button>
             <ul>
                 {queryResults}
             </ul>
-        </div>
+        </ContentContainer>
     }
 
     async runSampleQuery() {

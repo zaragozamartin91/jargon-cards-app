@@ -1,0 +1,19 @@
+html,
+body,
+#app,
+.contentContainer {
+    height: 100%;
+}
+
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    overflow-y: hidden; /* Prevent vertical scrolling */
+}
+
+.contentContainer {
+    /* Center all content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
