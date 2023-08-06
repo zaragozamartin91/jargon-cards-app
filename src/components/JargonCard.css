@@ -1,8 +1,8 @@
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
     background-color: transparent;
-    width: 300px;
-    height: 200px;
+    width: 50%;
+    height: 50%;
     border: 1px solid #f1f1f1;
     perspective: 1000px;
     /* Remove this if you don't want the 3D effect */
@@ -17,6 +17,21 @@
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
+
+@media (max-width: 500px) {
+    .flip-card {
+        width: 80%;
+        /* Change the width to 80% for screens smaller than 500px */
+    }
+}
+
+@media (max-height: 500px) {
+    .flip-card {
+        height: 80%;
+        /* Change the height to 80% for screens smaller than 500px */
+    }
+}
+
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
 /* .flip-card:hover .flip-card-inner {
@@ -45,4 +60,10 @@
     background-color: dodgerblue;
     color: white;
     transform: rotateY(180deg);
+}
+
+.flip-card p {
+    font-size: 24px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
